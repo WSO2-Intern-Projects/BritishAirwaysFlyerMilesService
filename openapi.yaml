@@ -1,0 +1,44 @@
+openapi: 3.0.3
+info:
+  title: british-flyermiles-api
+  version: 1.0.0
+servers:
+  - url: http://localhost:8090
+paths:
+  /FlyerMilesService/milesFlown/{cusid}:
+    get:
+      tags:
+        - default
+      summary: Get total milesFlown by CUSID
+      operationId: GetMilesFlownByCUSID
+      parameters:
+        - name: cusid
+          in: path
+          description: CUSID of customer
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/miles"
+        "404":
+          description: CUSID not found
+
+components:
+  schemas:
+    miles:
+      type: object
+      required:
+        - milesFlown
+        - customerId
+      properties:
+        milesFlown:
+          type: string
+          example: "97880"
+        customerId:
+          type: string
+          example: "cus0001"
