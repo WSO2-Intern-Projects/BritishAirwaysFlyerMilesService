@@ -38,7 +38,7 @@ VOLUME /tmp
 USER 10014
 
 # Add Spring Boot app.jar to Container
-COPY --from=0 "/app/target/british-airways-check-in.jar" app.jar
+COPY --from=0 "/app/target/british-airways-flyer-miles.jar" app.jar
 
 # Expose the port your application will run on
 EXPOSE 8080
